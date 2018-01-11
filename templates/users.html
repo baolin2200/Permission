@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <h1>用户列表</h1>
+
+    {% if "add" in request.permission_codes %}
+        <a href="#">添加</a>
+    {% endif %}
+
+    <table border="1">
+        {% for row in user_list %}
+            <tr>
+                <td>{{ row.id }}</td>
+                <td>{{ row.username }}</td>
+                {% if "edit" in request.permission_codes %}
+                    <td>
+                        <a href="">编辑</a>
+                    </td>
+                {% endif %}
+                {% if "del" in request.permission_codes %}
+                    <td>
+                        <a href="">删除</a>
+                    </td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+    <div style="height: 1000px"></div>
+{% endblock %}
+
